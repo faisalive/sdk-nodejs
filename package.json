@@ -1,0 +1,43 @@
+{
+  "name": "remotebrowser",
+  "version": "0.1.0",
+  "description": "Node.js SDK for Remote Browser",
+  "type": "module",
+  "exports": {
+    ".": "./index.js"
+  },
+  "bin": {
+    "remotebrowser": "./bin.js"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "browsers.js",
+    "errors.js",
+    "cli.js",
+    "bin.js"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test \"*_tests.js\"",
+    "format": "oxfmt \"*.{js,json,md}\"",
+    "typecheck": "oxlint --type-aware"
+  },
+  "keywords": [
+    "remotebrowser",
+    "browser",
+    "cdp",
+    "sdk"
+  ],
+  "homepage": "https://remotebrowser.ai",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "~26.1.2",
+    "oxfmt": "~0.75.0",
+    "oxlint": "~1.75.0",
+    "oxlint-tsgolint": "~7.0.2001",
+    "typescript": "~6.0.3"
+  }
+}

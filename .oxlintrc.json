@@ -1,0 +1,7 @@
+{
+  "ignorePatterns": ["*_tests.js"],
+  "rules": {
+    "typescript/no-useless-default-assignment": "off",
+    "typescript/no-redundant-type-constituents": "off"
+  }
+}
