@@ -1,5 +1,5 @@
 {
-  "name": "remotebrowser",
+  "name": "@remotebrowser/sdk",
   "version": "0.1.0",
   "description": "Node.js SDK for Remote Browser",
   "type": "module",
@@ -32,6 +32,9 @@
     "sdk"
   ],
   "homepage": "https://remotebrowser.ai",
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/node": "~26.1.2",

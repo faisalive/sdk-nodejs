@@ -7,13 +7,13 @@ Requires Node.js 22 or later. It has no dependencies and uses the built-in `fetc
 ## Installation
 
 ```bash
-npm install remotebrowser
+npm install @remotebrowser/sdk
 ```
 
 ## Usage
 
 ```js
-import RemoteBrowser from 'remotebrowser';
+import RemoteBrowser from '@remotebrowser/sdk';
 
 const client = new RemoteBrowser({
   apiKey: process.env.REMOTEBROWSER_API_KEY, // default, can be omitted
@@ -44,7 +44,7 @@ await page.close();
 The package installs a `remotebrowser` executable. It reads the same `REMOTEBROWSER_API_KEY` and `REMOTEBROWSER_URL` environment variables.
 
 ```bash
-npm install -g remotebrowser   # or: npx remotebrowser <command>
+npm install -g @remotebrowser/sdk   # or: npx @remotebrowser/sdk <command>
 
 ID=$(remotebrowser create --os ubuntu-26.04 --browser chrome --wait)
 remotebrowser list
