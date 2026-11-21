@@ -7,7 +7,7 @@
     ".": "./index.js"
   },
   "bin": {
-    "remotebrowser": "./bin.js"
+    "remotebrowser": "bin.js"
   },
   "files": [
     "index.js",
