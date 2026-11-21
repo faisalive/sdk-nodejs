@@ -40,10 +40,10 @@ test('help needs no credentials', async () => {
 
 test('create sends the options and prints the id', async () => {
   const cli = setup([200, { browser_id: 'B1', status: 'starting' }]);
-  const code = await cli.run('create', '--os', 'ubuntu-26.04', '--screen-scale', '150', '--no-webgl');
+  const code = await cli.run('create', '--os', 'ubuntu-26.04', '--screen-scale', '150');
   assert.equal(code, 0);
   assert.equal(cli.calls[0].method, 'POST');
-  assert.deepEqual(JSON.parse(cli.calls[0].body), { os: 'ubuntu-26.04', screen_scale: 150, webgl: false });
+  assert.deepEqual(JSON.parse(cli.calls[0].body), { os: 'ubuntu-26.04', screen_scale: 150 });
   assert.equal(cli.stdout, 'B1\n');
 });
 

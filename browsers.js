@@ -8,7 +8,6 @@
  * @property {'chromium' | 'chrome'} [browser]
  * @property {'full-hd' | 'wuxga' | 'qhd' | '4k'} [screen_resolution]
  * @property {100 | 125 | 150 | 175 | 200} [screen_scale]
- * @property {boolean} [webgl]
  * @property {string | null} [proxy] http://, socks4:// or socks5:// URL.
  *
  * @typedef {{ browser_id: string, status: BrowserStatus }} BrowserStatusResponse

@@ -69,7 +69,7 @@ remotebrowser delete $ID
 | `config set <id> --proxy <url>`      | Change the proxy                                   |
 | `config set <id> --no-proxy`         | Remove the proxy                                   |
 
-`create` takes `--name`, `--description`, `--os`, `--browser`, `--screen-resolution`, `--screen-scale`, `--webgl`/`--no-webgl`, `--proxy`, and `--wait` (wait until the browser is running). Every command takes `--json` to print the raw API response. Run `remotebrowser help` for details.
+`create` takes `--name`, `--description`, `--os`, `--browser`, `--screen-resolution`, `--screen-scale`, `--proxy`, and `--wait` (wait until the browser is running). Every command takes `--json` to print the raw API response. Run `remotebrowser help` for details.
 
 The CDP endpoint needs the API key in the `Authorization: Bearer` header.
 

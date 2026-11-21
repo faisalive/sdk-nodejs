@@ -38,7 +38,6 @@ Options for create:
   --browser <browser>          chromium or chrome
   --screen-resolution <res>    full-hd, wuxga, qhd or 4k
   --screen-scale <percent>     100, 125, 150, 175 or 200
-  --webgl, --no-webgl          Enable or disable WebGL
   --proxy <url>                http://, socks4:// or socks5:// URL
   --wait                       Wait until the browser is running
 
@@ -69,25 +68,12 @@ const OPTIONS = /** @type {const} */ ({
   'browser': { type: 'string' },
   'screen-resolution': { type: 'string' },
   'screen-scale': { type: 'string' },
-  'webgl': { type: 'boolean' },
-  'no-webgl': { type: 'boolean' },
   'proxy': { type: 'string' },
   'no-proxy': { type: 'boolean' },
   'wait': { type: 'boolean' }
 });
 
-const CREATE_OPTIONS = [
-  'name',
-  'description',
-  'os',
-  'browser',
-  'screen-resolution',
-  'screen-scale',
-  'webgl',
-  'no-webgl',
-  'proxy',
-  'wait'
-];
+const CREATE_OPTIONS = ['name', 'description', 'os', 'browser', 'screen-resolution', 'screen-scale', 'proxy', 'wait'];
 const CONFIG_SET_OPTIONS = ['proxy', 'no-proxy'];
 
 class UsageError extends Error {}
@@ -225,10 +211,6 @@ function printFields(ctx, fields) {
  * @param {number} pollInterval
  */
 async function create(ctx, values, pollInterval) {
-  if (values.webgl && values['no-webgl']) {
-    throw new UsageError('--webgl and --no-webgl cannot be used together');
-  }
-
   /** @type {import('./browsers.js').BrowserCreateParams} */
   const params = {};
   if (values.name !== undefined) params.name = String(values.name);
@@ -245,8 +227,6 @@ async function create(ctx, values, pollInterval) {
     if (!Number.isInteger(scale)) throw new UsageError('--screen-scale must be a number');
     params.screen_scale = /** @type {100 | 125 | 150 | 175 | 200} */ (scale);
   }
-  if (values.webgl) params.webgl = true;
-  if (values['no-webgl']) params.webgl = false;
   if (values.proxy !== undefined) params.proxy = String(values.proxy);
 
   const client = ctx.client();
