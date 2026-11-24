@@ -23,6 +23,20 @@ const DEFAULT_MAX_RETRIES = 2;
 const MAX_RETRY_DELAY = 60 * 1000;
 
 export class RemoteBrowser {
+  static RemoteBrowserError = Errors.RemoteBrowserError;
+  static APIError = Errors.APIError;
+  static APIConnectionError = Errors.APIConnectionError;
+  static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
+  static APIUserAbortError = Errors.APIUserAbortError;
+  static BadRequestError = Errors.BadRequestError;
+  static AuthenticationError = Errors.AuthenticationError;
+  static PermissionDeniedError = Errors.PermissionDeniedError;
+  static NotFoundError = Errors.NotFoundError;
+  static ConflictError = Errors.ConflictError;
+  static UnprocessableEntityError = Errors.UnprocessableEntityError;
+  static RateLimitError = Errors.RateLimitError;
+  static InternalServerError = Errors.InternalServerError;
+
   /** @param {ClientOptions} [options] */
   constructor({
     apiKey = process.env.REMOTEBROWSER_API_KEY,
@@ -59,30 +73,52 @@ export class RemoteBrowser {
     return { Authorization: `Bearer ${this.apiKey}` };
   }
 
-  /** @param {string} path @param {RequestOptions} [options] */
+  /**
+   * @template [T=any]
+   * @param {string} path
+   * @param {RequestOptions} [options]
+   * @returns {Promise<T>}
+   */
   get(path, options) {
     return this.request('GET', path, options);
   }
 
-  /** @param {string} path @param {RequestOptions} [options] */
+  /**
+   * @template [T=any]
+   * @param {string} path
+   * @param {RequestOptions} [options]
+   * @returns {Promise<T>}
+   */
   post(path, options) {
     return this.request('POST', path, options);
   }
 
-  /** @param {string} path @param {RequestOptions} [options] */
+  /**
+   * @template [T=any]
+   * @param {string} path
+   * @param {RequestOptions} [options]
+   * @returns {Promise<T>}
+   */
   patch(path, options) {
     return this.request('PATCH', path, options);
   }
 
-  /** @param {string} path @param {RequestOptions} [options] */
+  /**
+   * @template [T=any]
+   * @param {string} path
+   * @param {RequestOptions} [options]
+   * @returns {Promise<T>}
+   */
   delete(path, options) {
     return this.request('DELETE', path, options);
   }
 
   /**
+   * @template [T=any]
    * @param {string} method
    * @param {string} path
    * @param {RequestOptions} [options]
+   * @returns {Promise<T>}
    */
   async request(method, path, options = {}) {
     const maxRetries = options.maxRetries ?? this.maxRetries;
@@ -159,5 +195,3 @@ function retryDelay(err, attempt) {
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-
-Object.assign(RemoteBrowser, Errors);

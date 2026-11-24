@@ -4,8 +4,12 @@
   "description": "Node.js SDK for Remote Browser",
   "type": "module",
   "exports": {
-    ".": "./index.js"
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    }
   },
+  "types": "./index.d.ts",
   "bin": {
     "remotebrowser": "bin.js"
   },
@@ -15,7 +19,11 @@
     "browsers.js",
     "errors.js",
     "cli.js",
-    "bin.js"
+    "bin.js",
+    "index.d.ts",
+    "client.d.ts",
+    "browsers.d.ts",
+    "errors.d.ts"
   ],
   "engines": {
     "node": ">=22"
@@ -23,7 +31,9 @@
   "scripts": {
     "test": "node --test \"*_tests.js\"",
     "format": "oxfmt \"*.{js,json,md}\"",
-    "typecheck": "oxlint --type-aware"
+    "typecheck": "oxlint --type-aware",
+    "build:types": "node -e \"for (const f of require('fs').readdirSync('.')) if (f.endsWith('.d.ts')) require('fs').rmSync(f)\" && tsc -p tsconfig.build.json",
+    "prepack": "npm run build:types"
   },
   "keywords": [
     "remotebrowser",
