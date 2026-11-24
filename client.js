@@ -73,30 +73,52 @@ export class RemoteBrowser {
     return { Authorization: `Bearer ${this.apiKey}` };
   }
 
-  /** @param {string} path @param {RequestOptions} [options] */
+  /**
+   * @template [T=any]
+   * @param {string} path
+   * @param {RequestOptions} [options]
+   * @returns {Promise<T>}
+   */
   get(path, options) {
     return this.request('GET', path, options);
   }
 
-  /** @param {string} path @param {RequestOptions} [options] */
+  /**
+   * @template [T=any]
+   * @param {string} path
+   * @param {RequestOptions} [options]
+   * @returns {Promise<T>}
+   */
   post(path, options) {
     return this.request('POST', path, options);
   }
 
-  /** @param {string} path @param {RequestOptions} [options] */
+  /**
+   * @template [T=any]
+   * @param {string} path
+   * @param {RequestOptions} [options]
+   * @returns {Promise<T>}
+   */
   patch(path, options) {
     return this.request('PATCH', path, options);
   }
 
-  /** @param {string} path @param {RequestOptions} [options] */
+  /**
+   * @template [T=any]
+   * @param {string} path
+   * @param {RequestOptions} [options]
+   * @returns {Promise<T>}
+   */
   delete(path, options) {
     return this.request('DELETE', path, options);
   }
 
   /**
+   * @template [T=any]
    * @param {string} method
    * @param {string} path
    * @param {RequestOptions} [options]
+   * @returns {Promise<T>}
    */
   async request(method, path, options = {}) {
     const maxRetries = options.maxRetries ?? this.maxRetries;
