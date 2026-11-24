@@ -34,6 +34,7 @@ function browserPath(id, suffix = '') {
 export class Config {
   /** @param {import('./client.js').RemoteBrowser} client */
   constructor(client) {
+    /** @private */
     this._client = client;
   }
 
@@ -61,6 +62,7 @@ export class Config {
 export class Browsers {
   /** @param {import('./client.js').RemoteBrowser} client */
   constructor(client) {
+    /** @private */
     this._client = client;
     this.config = new Config(client);
   }

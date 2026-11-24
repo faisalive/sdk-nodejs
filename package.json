@@ -32,7 +32,7 @@
     "test": "node --test \"*_tests.js\"",
     "format": "oxfmt \"*.{js,json,md}\"",
     "typecheck": "oxlint --type-aware",
-    "build:types": "rm -f *.d.ts && tsc -p tsconfig.build.json",
+    "build:types": "node -e \"for (const f of require('fs').readdirSync('.')) if (f.endsWith('.d.ts')) require('fs').rmSync(f)\" && tsc -p tsconfig.build.json",
     "prepack": "npm run build:types"
   },
   "keywords": [
