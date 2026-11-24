@@ -1,4 +1,5 @@
 export class RemoteBrowserError extends Error {
+  /** @param {string} [message] */
   constructor(message) {
     super(message);
     this.name = this.constructor.name;
@@ -34,6 +35,7 @@ export class APIError extends RemoteBrowserError {
 }
 
 export class APIConnectionError extends APIError {
+  /** @param {{ message?: string, cause?: unknown }} [options] */
   constructor({ message, cause } = {}) {
     super(undefined, undefined, message || 'Connection error.', undefined);
     if (cause) this.cause = cause;
@@ -41,12 +43,14 @@ export class APIConnectionError extends APIError {
 }
 
 export class APIConnectionTimeoutError extends APIConnectionError {
+  /** @param {{ message?: string }} [options] */
   constructor({ message } = {}) {
     super({ message: message ?? 'Request timed out.' });
   }
 }
 
 export class APIUserAbortError extends APIError {
+  /** @param {{ message?: string }} [options] */
   constructor({ message } = {}) {
     super(undefined, undefined, message || 'Request was aborted.', undefined);
   }
